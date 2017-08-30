@@ -19,9 +19,14 @@ import java.util.Scanner;
  */
 public class SectionSum {
 
-
+    /**
+     * used to calculate the max section sum of {@code ints}
+     * @param ints int type array waited to be calculated
+     * @return the max section sum {@code result} of {@code ints}
+     */
     public static int secSum(int[] ints) {
         int result = Integer.MIN_VALUE;
+        // the circle sum used to judge which next element is less than 0
         int sum = 0;
         for (int i : ints) {
             sum += i;
@@ -35,6 +40,12 @@ public class SectionSum {
         return result;
     }
 
+    /**
+     * used to calculate the max section sum of {@code ints}
+     * @param ints int type array waited to be calculated
+     * @param length the length of array {@code ints}
+     * @return the max section sum {@code result} of {@code ints}
+     */
     public static int secSum(int[] ints, int length) {
         int result = Integer.MIN_VALUE;
         int sum = 0;
@@ -50,12 +61,10 @@ public class SectionSum {
         return result;
     }
 
-
     /**
-     * calculate section sum directly from console
+     * calculate section sum directly from console with array's length
      */
-
-    public static void secSum() {
+    public static void secSumWithLength() {
         Scanner sc = new Scanner(System.in);
         // the length of array
         int length = sc.nextInt();
@@ -68,7 +77,25 @@ public class SectionSum {
             if (sum > result) {
                 result = sum;
             }
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        System.out.println(result);
+    }
 
+    /**
+     * calculate the section sum directly from the console without array's length
+     */
+    public static void secSumWithoutLength() {
+        Scanner sc = new Scanner(System.in);
+        int result = Integer.MIN_VALUE;
+        int sum = 0;
+        while(sc.hasNextInt()) {
+            sum += sc.nextInt();
+            if (sum > result) {
+                result = sum;
+            }
             if (sum < 0) {
                 sum = 0;
             }
